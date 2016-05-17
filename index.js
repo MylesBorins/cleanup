@@ -14,6 +14,7 @@ const T = new Twit(config);
 const stream = T.stream('user');
 
 stream.on('tweet', (tweet) => {
+  console.log(`${tweet.user['screen_name']} says:\n ${tweet.text}\n`);
   if (tweet.user['screen_name'] === config.username
         && tweet.text.search('#cleanup') > -1)
     deleteThread(T, tweet);
