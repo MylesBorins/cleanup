@@ -11,9 +11,7 @@ const config = require('./local.json');
 
 const T = new Twit(config);
 
-const stream = T.stream('user', {
-  'screen_name': 'thealphanerd'
-});
+const stream = T.stream('user');
 
 stream.on('tweet', (tweet) => {
   if (tweet.user['screen_name'] === config.username
