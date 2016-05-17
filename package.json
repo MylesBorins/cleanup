@@ -15,8 +15,6 @@
   "repository": "https://github.com/TheAlphaNerd/cleanup",
   "dependencies": {
     "forever": "^0.15.1",
-    "lodash.includes": "^4.0.1",
-    "through2": "^2.0.1",
     "twit": "^2.2.2"
   },
   "devDependencies": {

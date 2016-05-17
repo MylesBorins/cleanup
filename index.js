@@ -2,7 +2,6 @@
 
 // npm modules
 const Twit = require('twit');
-const includes = require('lodash.includes');
 
 // local modules
 const deleteThread = require('./lib/delete-thread');
