@@ -1,7 +1,5 @@
 # cleanup
 
-Snap Chat for twitter
-
 Tweet in any of your threads with the phrase `#cleanup` and the entire thread will be cleaned up for you.
 
 You can follow the phrase `#cleanup` with a timer for how long until the process is kicked off. use any decimal number followed by one of the below delimeters to specify an amount of time
