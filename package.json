@@ -1,0 +1,25 @@
+{
+  "name": "cleanup",
+  "version": "1.0.0",
+  "description": "snapchat for twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint index.js lib/",
+    "start": "forever start -a -l cleanup.log -o out.log -e error.log --uid cleanup index.js",
+    "stop": "forever stop cleanup",
+    "watch": "forever -w index.js"
+  },
+  "author": "Myles Borins",
+  "license": "MIT",
+  "repository": "https://github.com/TheAlphaNerd/cleanup",
+  "dependencies": {
+    "forever": "^0.15.1",
+    "lodash.includes": "^4.0.1",
+    "through2": "^2.0.1",
+    "twit": "^2.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.10.2"
+  }
+}

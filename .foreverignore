@@ -1,0 +1,7 @@
+.eslint
+.dockerignore
+Dockerfile
+.gitignore
+*.log
+README.md
+package.json
