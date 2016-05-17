@@ -1,6 +1,6 @@
 {
   "name": "cleanup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "snapchat for twitter",
   "main": "index.js",
   "scripts": {
