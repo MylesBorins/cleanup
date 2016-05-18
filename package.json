@@ -4,7 +4,8 @@
   "description": "snapchat for twitter",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint && npm run tap",
+    "tap": "tap test/test-*",
     "lint": "eslint index.js lib/",
     "start": "forever start -a -l cleanup.log -o out.log -e error.log --uid cleanup index.js",
     "stop": "forever stop cleanup",
@@ -18,6 +19,7 @@
     "twit": "^2.2.2"
   },
   "devDependencies": {
-    "eslint": "^2.10.2"
+    "eslint": "^2.10.2",
+    "tap": "^5.7.1"
   }
 }
