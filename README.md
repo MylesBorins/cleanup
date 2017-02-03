@@ -10,6 +10,36 @@ You can follow the phrase `#cleanup` with a timer for how long until the process
 
 For example if you want to delete a thread in 5 minutes reply to the latest tweet with `#cleanup 5m`
 
+## Configuration
+
+A template for the configuration file needed for this application is included.
+
+To get started simply copy it
+
+```bash
+$ cp local.json-dist local.json
+
+```
+
+You are then free to fill it in with data from https://apps.twitter.com
+
+```json
+{
+  "username": "YourTwitterNameNoAtSymbol",
+  "consumer_key": "YouGet",
+  "consumer_secret": "TheseKey",
+  "access_token": "FromTheTwitter",
+  "access_token_secret": "AppsWebsite",
+}
+```
+
+## Amnesia
+
+By including the key "memoryLength" in your local.json `cleanup` will help your timeline forget all retweets
+base on a set duration of time. You can provide a number or alternatively use the same grammar used in the tweets
+
+A good default is `24h`
+
 ## OMG DOCKER
 
 Clone this repo, and create a local.json.
