@@ -35,8 +35,8 @@ You are then free to fill it in with data from https://apps.twitter.com
 
 ## Amnesia
 
-By including the key "memoryLength" in your local.json `cleanup` will help your timeline forget all retweets
-base on a set duration of time. You can provide a number or alternatively use the same grammar used in the tweets
+By including the key "amnesia" in your local.json `cleanup` will help your timeline forget all retweets.
+You can either provide a number in ms or a time using the same grammer described above
 
 A good default is `24h`
 
