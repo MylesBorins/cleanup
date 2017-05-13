@@ -6,6 +6,7 @@ const Twit = require('twit');
 // local modules
 const deleteThread = require('./lib/delete-thread');
 const amnesia = require('./lib/amnesia');
+require('./lib/health')();
 
 // local data
 const config = require('./local.json');

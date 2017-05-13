@@ -7,19 +7,19 @@
     "test": "npm run lint && npm run tap",
     "tap": "tap test/test-*",
     "lint": "eslint index.js lib/",
-    "start": "forever start -a -l cleanup.log -o out.log -e error.log --uid cleanup index.js",
+    "start": "node index.js",
     "stop": "forever stop cleanup",
     "watch": "forever -w index.js"
   },
   "author": "Myles Borins",
   "license": "MIT",
-  "repository": "https://github.com/TheAlphaNerd/cleanup",
+  "repository": "https://github.com/MylesBorins/cleanup",
   "dependencies": {
-    "forever": "^0.15.1",
     "twit": "^2.2.2"
   },
   "devDependencies": {
     "eslint": "^2.10.2",
+    "forever": "^0.15.1",
     "tap": "^5.7.1"
   }
 }
