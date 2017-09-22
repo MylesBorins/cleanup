@@ -2,14 +2,14 @@
   "name": "cleanup",
   "version": "2.1.4",
   "description": "snapchat for twitter",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "npm run lint && npm run tap",
     "tap": "tap test/test-*",
-    "lint": "eslint index.js lib/",
-    "start": "node index.js",
+    "lint": "eslint server.js lib/",
+    "start": "node server.js",
     "stop": "forever stop cleanup",
-    "watch": "forever -w index.js"
+    "watch": "forever -w server.js"
   },
   "author": "Myles Borins",
   "license": "MIT",
