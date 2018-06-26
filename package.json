@@ -15,11 +15,11 @@
   "license": "MIT",
   "repository": "https://github.com/MylesBorins/cleanup",
   "dependencies": {
-    "twit": "^2.2.2"
+    "twit": "^2.2.10"
   },
   "devDependencies": {
-    "eslint": "^2.10.2",
+    "eslint": "^5.0.1",
     "forever": "^0.15.1",
-    "tap": "^5.7.1"
+    "tap": "^12.0.1"
   }
 }
