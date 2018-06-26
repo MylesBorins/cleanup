@@ -1,4 +1,4 @@
-FROM node:6-alpine
+FROM node:8-alpine
 HEALTHCHECK CMD curl -f http://localhost:1337/ || exit 1
 copy . .
 RUN npm install --production
