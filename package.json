@@ -7,9 +7,7 @@
     "test": "npm run lint && npm run tap",
     "tap": "tap test/test-*",
     "lint": "eslint server.js lib/",
-    "start": "node server.js",
-    "stop": "forever stop cleanup",
-    "watch": "forever -w server.js"
+    "start": "node server.js"
   },
   "author": "Myles Borins",
   "license": "MIT",
@@ -19,7 +17,6 @@
   },
   "devDependencies": {
     "eslint": "^5.0.1",
-    "forever": "^0.15.1",
     "tap": "^12.0.1"
   }
 }
