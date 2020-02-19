@@ -1,5 +1,4 @@
-FROM node:10-alpine
+FROM node:12-alpine
 copy . .
 RUN npm ci --production
-RUN touch {cleanup,out,err}.log
-CMD npm start && tail -f /out.log
+CMD npm start

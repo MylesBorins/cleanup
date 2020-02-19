@@ -1,8 +1,8 @@
 {
-  "username": "",
+  "userid": "",
   "consumer_key": "",
   "consumer_secret": "",
   "access_token": "",
-  "access_token_secret": ""
-  "amnesia": false || ""
+  "access_token_secret": "",
+  "env": ""
 }

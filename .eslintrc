@@ -6,5 +6,8 @@
   "rules": {
     "quotes": [2, "single"],
     "camelcase": 0
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
   }
 }

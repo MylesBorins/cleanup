@@ -1,6 +1,6 @@
 {
   "name": "cleanup",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "snapchat for twitter",
   "main": "server.js",
   "scripts": {
@@ -13,10 +13,11 @@
   "license": "MIT",
   "repository": "https://github.com/MylesBorins/cleanup",
   "dependencies": {
-    "twit": "^2.2.10"
+    "twit": "^2.2.10",
+    "twitter-autohook": "^1.4.1"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
-    "tap": "^12.0.1"
+    "eslint": "^6.8.0",
+    "tap": "^14.10.6"
   }
 }
