@@ -11,10 +11,6 @@ const config = require('./local.json');
 
 const T = new Twit(config);
 
-function itMe(user) {
-  return user['screen_name'].toLowerCase() === config.username.toLowerCase()
-}
-
 stream.start(config, (event) => {
   const tweets = event['tweet_create_events'];
   if (!tweets) return;
