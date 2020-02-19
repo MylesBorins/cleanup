@@ -25,11 +25,12 @@ You are then free to fill it in with data from https://apps.twitter.com
 
 ```json
 {
-  "username": "YourTwitterNameNoAtSymbol",
+  "userid": "YourTwitterUserID",
   "consumer_key": "YouGet",
   "consumer_secret": "TheseKey",
   "access_token": "FromTheTwitter",
   "access_token_secret": "AppsWebsite",
+  "env": "Your API Env"
 }
 ```
 
