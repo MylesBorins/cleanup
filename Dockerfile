@@ -1,4 +1,5 @@
-FROM node:12-alpine
-copy . .
+FROM node:12
+WORKDIR /app
+COPY . .
 RUN npm ci --production
-CMD npm start
+CMD ["node", "server.js"]
