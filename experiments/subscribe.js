@@ -4,7 +4,14 @@
 const fetch = require('node-fetch');
 const Headers = fetch.Headers;
 
-const {consumer_key, consumer_secret, env, webhook_url} = require('../local.json');
+const {
+  access_token,
+  access_token_secret,
+  consumer_key,
+  consumer_secret,
+  env,
+  webhook_url
+} = require('../local.json');
 
 const { getBearerToken } = require('./bearer');
 
@@ -35,11 +42,14 @@ async function main(auth) {
     console.log('No webhook found');
   }
   console.log('Registering new webhook');
-  const result = await registerWebhook({
+  const success = await registerWebhook({
     key: consumer_key,
-    secret: consumer_secret
-  }, env, 'https://test.kni.sh/webhook');
-  if (!result.ok) throw new Error(`webhook creation failed: ${result.statusText}`);
+    secret: consumer_secret,
+  }, {
+    key: access_token.trim(),
+    secret: access_token_secret.trim()
+  }, env, webhook_url);
+  if (!success) throw new Error(`webhook creation failed`);
   console.log('Successfully created webhook 🎉');
 }
 

@@ -10,10 +10,9 @@ function hash_function_sha1(base_string, key) {
       .digest('base64')
 }
 
-function createOAuthHeader(token, requestData) {
-
+function createOAuthHeader(consumerToken, accessToken, requestData) {
   const oauth = OAuth({
-    consumer: token,
+    consumer: consumerToken,
     signature_method: 'HMAC-SHA1',
     hash_function(base_string, key) {
       return crypto
@@ -22,9 +21,8 @@ function createOAuthHeader(token, requestData) {
         .digest('base64');
     }
   });
-  const header = oauth.toHeader(oauth.authorize(requestData, token));
+  const header = oauth.toHeader(oauth.authorize(requestData, accessToken));
   const obj = new Headers(header);
-  console.log(obj)
   return obj;
 }
 

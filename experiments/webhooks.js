@@ -30,22 +30,19 @@ async function getWebhooks(bearer, env) {
   return json;
 }
 
-async function registerWebhook(token, env, url) {
-  const params = new URLSearchParams();
-  params.append('url', url);
+async function registerWebhook(consumerToken, accessToken, env, url) {
+  const endpoint = new URL(`https://api.twitter.com/1.1/account_activity/all/${env}/webhooks.json`);
+  endpoint.searchParams.append('url', url);
   const requestData = {
-    url: `https://api.twitter.com/1.1/account_activity/all/${env}/webhooks.json`,
-    method: 'post',
-    data: params
-  }
+    url: endpoint.toString(),
+    method: 'POST'
+  };
   const res = await fetch(requestData.url, {
     method: requestData.method,
-    body: requestData.data,
-    headers: createOAuthHeader(token, requestData)
+    headers: createOAuthHeader(consumerToken, accessToken, requestData)
   });
   if (!res.ok) throw new Error(res.statusText);
-  const json = await res.json();
-  return json;
+  return res.ok;
 }
 
 module.exports = {
