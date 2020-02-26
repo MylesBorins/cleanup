@@ -1,6 +1,3 @@
-// inspired by twitter-autohook
-// https://github.com/twitterdev/autohook
-// MIT
 const fetch = require('node-fetch');
 const Headers = fetch.Headers;
 
