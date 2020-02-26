@@ -42,7 +42,8 @@ async function registerWebhook(consumerToken, accessToken, env, url) {
     headers: createOAuthHeader(consumerToken, accessToken, requestData)
   });
   if (!res.ok) throw new Error(res.statusText);
-  return res.ok;
+  const json = await res.json();
+  return json;
 }
 
 module.exports = {
