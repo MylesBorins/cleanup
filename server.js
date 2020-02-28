@@ -7,14 +7,28 @@ const http = require('http');
 const url = require('url');
 
 const BufferList = require('bl');
+const Twit = require('twit');
+
+// local modules
+const deleteThread = require('./lib/delete-thread');
 
 const port = process.env.PORT || 8000;
-let consumer_secret = process.env.CONSUMER_SECRET;
+
+const auth = {
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+};
+
+const userid = process.env.USER_ID;
+
+let T;
 
 function validateWebhook(token, res) {
   console.log('Validating Webhook');
   const responseToken = crypto
-    .createHmac('sha256', consumer_secret)
+    .createHmac('sha256', auth.consumer_secret)
     .update(token)
     .digest('base64');
   res.writeHead(200, {'content-type': 'application/json'});
@@ -23,15 +37,29 @@ function validateWebhook(token, res) {
   }));
 }
 
+function handleTweet(tweet) {
+  console.log(`${tweet.user['screen_name']} says:\n ${tweet.text}\n`);
+  if (tweet.user.id_str === userid) {
+    if (tweet.text.search('#cleanup') > -1) {
+      if (!T) T = new Twit(auth);
+      console.log('cleanup thread found')
+      deleteThread(T, tweet);
+    }
+  }
+}
+
 function handleWebhook(req, res) {
-  console.log('new message received');
   const dataBuffer = new BufferList();
   req.on('data', chunk => {
     dataBuffer.append(chunk);
   });
   req.on('end', () => {
     const result = JSON.parse(dataBuffer.toString());
-    console.log(result);
+    const tweets = result['tweet_create_events'];
+    if (tweets) {
+      console.log('Handling tweet event');
+      tweets.forEach(handleTweet);
+    }
     res.writeHead(200);
     res.end();
   });
