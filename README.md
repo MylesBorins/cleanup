@@ -53,5 +53,5 @@ docker build -t cleanup .
 
 **Run the container:**
 ```
-docker run -d --name cleanup --restart always -v $PWD/local.json:/local.json cleanup
+docker run -d --name cleanup --restart always -v $PWD/local.json:/local.json cleanup -p 8000:8000
 ```

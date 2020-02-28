@@ -38,10 +38,23 @@ async function registerWebhook(consumerToken, accessToken, env, url) {
     method: 'POST'
   };
   const res = await fetch(requestData.url, {
-    method: requestData.method,
-    headers: createOAuthHeader(consumerToken, accessToken, requestData)
+    headers: createOAuthHeader(consumerToken, accessToken, requestData),
+    method: requestData.method
   });
   if (!res.ok) throw new Error(res.statusText);
+  const json = await res.json();
+  return json;
+}
+
+async function subscribe(consumerToken, accessToken, env) {
+  const requestData = {
+    url: `https://api.twitter.com/1.1/account_activity/all/${env}/subscriptions.json`,
+    method: 'POST'
+  };
+  const res = await fetch(requestData.url, {
+    headers: createOAuthHeader(consumerToken, accessToken, requestData),
+    method: requestData.method
+  });
   const json = await res.json();
   return json;
 }
@@ -49,5 +62,6 @@ async function registerWebhook(consumerToken, accessToken, env, url) {
 module.exports = {
   deleteWebhook,
   getWebhooks,
-  registerWebhook
+  registerWebhook,
+  subscribe
 };

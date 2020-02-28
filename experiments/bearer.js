@@ -6,14 +6,11 @@ const bearerUrl = 'https://api.twitter.com/oauth2/token';
 const params = new URLSearchParams();
 params.append('grant_type', 'client_credentials');
 
-let _basicHeader;
-
 function basicHeader(auth) {
-  if (!_basicHeader) _basicHeader = new Headers({
+  return new Headers({
     Authorization: 'Basic '
       + Buffer.from(`${auth.user}:${auth.pass}`, 'utf8').toString('base64')
   });
-  return _basicHeader;
 }
 
 async function getBearerToken(auth) {
