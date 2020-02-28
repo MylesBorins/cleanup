@@ -30,11 +30,7 @@ async function main(auth) {
   const webhook = webhooks[0];
   if (webhook) {
     console.log(`webhook found`);
-    console.log(webhook);
-    // if (webhook.url === webhook_url) {
-      // console.log('Webhook already exists, doing nothing. 🎉');
-      // return;
-    // }
+    console.log(webhook.url)
     console.log('Deleting webhook');
     const success = await deleteWebhook(bearer, env, webhook.id);
     if (!success) throw new Error('webhook deletion failed');
@@ -53,7 +49,7 @@ async function main(auth) {
   }, env, webhook_url);
   if (!newWebhook) throw new Error(`webhook creation failed`);
   console.log('Successfully created webhook 🎉');
-  console.log(newWebhook);
+  console.log(newWebhook.url)
   console.log('Subscribing to events');
   const subscription = await subscribe({
     key: consumer_key,
@@ -61,8 +57,7 @@ async function main(auth) {
   }, {
     key: access_token.trim(),
     secret: access_token_secret.trim()
-  })
-  console.log(subscription)
+  }, env)
   console.log('Subscribed!')
 }
 

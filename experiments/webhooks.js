@@ -55,8 +55,8 @@ async function subscribe(consumerToken, accessToken, env) {
     headers: createOAuthHeader(consumerToken, accessToken, requestData),
     method: requestData.method
   });
-  const json = await res.json();
-  return json;
+  if (!res.ok) throw new Error(res.statusText);
+  return true;
 }
 
 module.exports = {
