@@ -19,7 +19,7 @@ const {
   subscribe
 } = require('./webhooks');
 
-async function main(auth) {
+async function cleanOldWebhook() {
   const bearer = await getBearerToken({
     user: consumer_key,
     pass: consumer_secret
@@ -39,6 +39,9 @@ async function main(auth) {
   else {
     console.log('No webhook found');
   }
+}
+
+async function registerNewWebhook() {
   console.log('Registering new webhook');
   const newWebhook = await registerWebhook({
     key: consumer_key,
@@ -50,6 +53,9 @@ async function main(auth) {
   if (!newWebhook) throw new Error(`webhook creation failed`);
   console.log('Successfully created webhook 🎉');
   console.log(newWebhook.url)
+}
+
+async function createSubscription() {
   console.log('Subscribing to events');
   const subscription = await subscribe({
     key: consumer_key,
@@ -59,6 +65,12 @@ async function main(auth) {
     secret: access_token_secret.trim()
   }, env)
   console.log('Subscribed!')
+}
+
+async function main(auth) {
+  await cleanOldWebhook();
+  await registerNewWebhook();
+  await createSubscription();
 }
 
 main().then(_ => {
