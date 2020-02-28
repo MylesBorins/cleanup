@@ -8,16 +8,16 @@ const {
   consumer_secret,
   env,
   webhook_url
-} = require('../local.json');
+} = require('./local.json');
 
-const { getBearerToken } = require('./bearer');
+const { getBearerToken } = require('./lib/bearer');
 
 const {
   registerWebhook,
   getWebhooks,
   deleteWebhook,
   subscribe
-} = require('./webhooks');
+} = require('./lib/webhooks');
 
 async function cleanOldWebhook() {
   const bearer = await getBearerToken({
